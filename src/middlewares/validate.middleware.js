@@ -32,8 +32,8 @@ const validateData = (data) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const validateRequiredFields = ({ body }, res, next) => {
-  const { rule, data } = body;
+export const validateRequiredFields = (req, res, next) => {
+  const { body: { rule, data } } = req;
   try {
     validateRule(rule);
     validateData(data);
