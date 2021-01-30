@@ -25,10 +25,9 @@ class FieldServices {
   }
 
   checkDataFields() {
-    if (
-      this.data[this.rule.field] === undefined
-      || this.data[this.rule.field] === null
-    ) { throw this.errorResponse('fieldValidation'); }
+    if (this.data[this.rule.field] === undefined || this.data[this.rule.field] === null) {
+      throw this.errorResponse('fieldValidation');
+    }
   }
 
   isNested() {
@@ -65,10 +64,7 @@ class FieldServices {
 
   errorResponse(fieldValidation = 'fieldValidation') {
     if (fieldValidation) {
-      throw new BadRequest(
-        `field ${this.rule.field} is missing from data.`,
-        null
-      );
+      throw new BadRequest(`field ${this.rule.field} is missing from data.`, null);
     }
     throw new BadRequest(`field ${this.rule.field} failed validation.`, {
       validation: {
