@@ -35,10 +35,17 @@ app.use(cookieParser());
 // app.use('/api/v1/', userRoute);
 
 app.get('/', (req, res) => {
-  res.send(`<h1>Welcome to the ----- Application</h1>
-  <h4>Please use PostMan and navigate to <code>/api/v1</code> to use the app</h4>
-  <p>For any more info please visit my <a href=''>Github</a> page</P>
-  <h4>Thanks  &#x1F600;</h4>`);
+  res.json({
+    message: 'My Rule-Validation API',
+    status: 'success',
+    data: {
+      name: 'Edafe Oghenefego',
+      github: '@fegoworks',
+      email: 'fegoworks@hotmail.com',
+      mobile: '+2347033521930',
+      twitter: '@realfego',
+    },
+  });
 });
 
 app.all('*', (req, res) => {
