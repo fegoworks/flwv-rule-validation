@@ -21,9 +21,9 @@ export class BadRequest extends ApiError {
 
 export const apiErrorHandler = (err, req, res) => {
   if (err instanceof ApiError) {
-    return res
-      .status(err.code)
-      .json({ message: err.message, status: 'error', data: err.data });
+    return res.status(err.code).json({
+      message: err.message, status: 'error', data: err.data
+    });
   }
 
   if (err instanceof SyntaxError && (err).status === 400 && 'body' in err
@@ -35,7 +35,7 @@ export const apiErrorHandler = (err, req, res) => {
     });
   }
 
-  res
-    .status(HttpErrorCodes.INTERNAL_SERVER)
-    .json({ message: err.message, status: 'error', data: null });
+  res.status(HttpErrorCodes.INTERNAL_SERVER).json({
+    message: err.message, status: 'error', data: null
+  });
 };
