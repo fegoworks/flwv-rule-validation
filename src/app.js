@@ -3,10 +3,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import env from 'dotenv';
-import userRoute from './routes/user.route';
+// import userRoute from './routes/user.route';
 
 env.config();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8888;
 const app = express();
 
 app.use((req, res, next) => {
@@ -32,7 +32,7 @@ app.use(
 app.use(cookieParser());
 
 // Routes here
-app.use('/api/v1/', userRoute);
+// app.use('/api/v1/', userRoute);
 
 app.get('/', (req, res) => {
   res.send(`<h1>Welcome to the ----- Application</h1>
@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 app.all('*', (req, res) => {
   res.status(404).json({
     status: 'error',
-    message: 'you have entered an incorrect route',
+    message: 'You have entered an incorrect route',
   });
 });
 
