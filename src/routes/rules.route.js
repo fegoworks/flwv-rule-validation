@@ -1,9 +1,13 @@
+/* eslint-disable require-jsdoc */
+/* eslint-disable class-methods-use-this */
 import express from 'express';
+import { validateRequiredFields } from '../middlewares/validate.middleware';
+import RulesController from '../controllers/rules.controller';
 
-// const router = express.Router();
+const router = express.Router();
 
-// router.post('/auth/create-user',
-//   validate.validateBody(validate.schemas.authSchema),
-//   UserController.createUser);
+router.post('/validate-rule',
+  validateRequiredFields,
+  RulesController.validateRule);
 
-// export default router;
+export default router;
