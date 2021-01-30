@@ -1,8 +1,8 @@
 {
-  "name": "express-babel-setup-template",
+  "name": "flwv-rule-validation",
   "version": "1.0.0",
-  "description": "Express-Babel-Setup - A simple express startoff template setup with babel, eslint, sequelize",
-  "main": "index.js",
+  "description": "A simple rule validation API",
+  "main": "app.js",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "build-server": "babel src --out-dir dist",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fegoworks/express-babel-setup-template.git"
+    "url": "git+https://github.com/fegoworks/flwv-rule-validation.git"
   },
   "author": "Edafe Oghenefego",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fegoworks/express-babel-setup-template/issues"
+    "url": "https://github.com/fegoworks/flwv-rule-validation/issues"
   },
-  "homepage": "https://github.com/fegoworks/express-babel-setup-template#readme",
+  "homepage": "https://github.com/fegoworks/flwv-rule-validation#readme",
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
