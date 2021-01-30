@@ -3,7 +3,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import env from 'dotenv';
-// import userRoute from './routes/user.route';
+import { apiErrorHandler } from './helpers/responseHandler';
+import RulesRoute from './routes/rules.route';
 
 env.config();
 const port = process.env.PORT || 8888;
@@ -32,7 +33,7 @@ app.use(
 app.use(cookieParser());
 
 // Routes here
-// app.use('/api/v1/', userRoute);
+app.use(RulesRoute);
 
 app.get('/', (req, res) => {
   res.json({
@@ -55,6 +56,7 @@ app.all('*', (req, res) => {
   });
 });
 
+app.use(apiErrorHandler);
 app
   .listen(port, () => console.log(`Welcome, listening on ${port}`))
   .on('error', (err) => {
