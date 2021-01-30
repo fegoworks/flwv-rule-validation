@@ -39,36 +39,3 @@ export const apiErrorHandler = (err, req, res) => {
     .status(HttpErrorCodes.INTERNAL_SERVER)
     .json({ message: err.message, status: 'error', data: null });
 };
-
-
-export const successResponse = () => this.res.json({
-  message: `field ${this.rule.field} successfully validated.`,
-  status: 'success',
-  data: {
-    validation: {
-      error: false,
-      field: this.rule.field,
-      field_value: this.getFieldValue(),
-      condition: this.rule.condition,
-      condition_value: this.rule.condition_value,
-    },
-  },
-});
-
-export const errorResponse = (fieldValidation = 'fieldValidation') => {
-  if (fieldValidation) {
-    throw new BadRequest(
-      `field ${this.rule.field} is missing from data.`,
-      null
-    );
-  }
-  throw new BadRequest(`field ${this.rule.field} failed validation.`, {
-    validation: {
-      error: true,
-      field: this.rule.field,
-      field_value: this.getFieldValue(),
-      condition: this.rule.condition,
-      condition_value: this.rule.condition_value,
-    },
-  });
-};
