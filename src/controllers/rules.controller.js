@@ -1,6 +1,6 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable class-methods-use-this */
-import { BadRequest } from '../helpers/responseHandler';
+import { BadRequest } from '../helpers/errorHandler';
 import RulesServices from '../services/rules.service';
 
 class RulesController {
