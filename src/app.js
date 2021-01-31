@@ -3,7 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import env from 'dotenv';
-import { apiErrorHandler } from './helpers/responseHandler';
+import { apiErrorHandler } from './helpers/errorHandler';
 import RulesRoute from './routes/rules.route';
 
 env.config();
@@ -34,7 +34,6 @@ app.use(cookieParser());
 
 // Routes here
 app.use(RulesRoute);
-
 app.get('/', (req, res) => {
   res.json({
     message: 'My Rule-Validation API',
@@ -48,14 +47,12 @@ app.get('/', (req, res) => {
     },
   });
 });
-
 app.all('*', (req, res) => {
   res.status(404).json({
     status: 'error',
     message: 'You have entered an incorrect route',
   });
 });
-
 app.use(apiErrorHandler);
 app
   .listen(port, () => console.log(`Welcome, listening on ${port}`))
