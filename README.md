@@ -1,5 +1,5 @@
 # Rule Validation System
-### Getting Started: 
+### Getting Started 
   Clone the repository and cd into the created folder using the commands below:\
     git clone https://github.com/fegoworks/flwv-rule-validation \
     cd flwv-rule-validation 
