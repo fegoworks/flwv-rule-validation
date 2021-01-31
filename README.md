@@ -1,8 +1,8 @@
 # Rule Validation System
 ### Getting Started: 
   Clone the repository and cd into the created folder using the commands below:\
-    git clone https://github.com/razaqfatiu/flutterwave.git \
-    cd flutterwave
+    git clone https://github.com/fegoworks/flwv-rule-validation \
+    cd flwv-rule-validation 
 
 ### Install Dependencies
     npm install
@@ -10,7 +10,7 @@
 ### Running Locally
     npm run start:dev
 
-### Working with the API
+### API
    #### server: http://localhost:8888
     
   - base route: 
