@@ -1,6 +1,6 @@
 /* eslint-disable valid-jsdoc */
 /* eslint-disable require-jsdoc */
-import { BadRequest } from '../helpers/responseHandler';
+import { HttpErrorCodes } from '../helpers/errorHandler';
 
 class FieldServices {
   constructor(res, rule, data) {
@@ -62,18 +62,26 @@ class FieldServices {
     });
   }
 
-  errorResponse(fieldValidation = 'fieldValidation') {
+  errorResponse(fieldValidation = '') {
     if (fieldValidation) {
-      throw new BadRequest(`field ${this.rule.field} is missing from data.`, null);
+      return this.res.status(HttpErrorCodes.BAD_REQUEST).json({
+        message: `field ${this.rule.field} is missing from data.`,
+        status: 'error',
+        data: null
+      });
     }
-    throw new BadRequest(`field ${this.rule.field} failed validation.`, {
-      validation: {
-        error: true,
-        field: this.rule.field,
-        field_value: this.getFieldValue(),
-        condition: this.rule.condition,
-        condition_value: this.rule.condition_value,
-      },
+    return this.res.status(HttpErrorCodes.BAD_REQUEST).json({
+      message: `field ${this.rule.field} failed validation.`,
+      status: 'error',
+      data: {
+        validation: {
+          error: true,
+          field: this.rule.field,
+          field_value: this.getFieldValue(),
+          condition: this.rule.condition,
+          condition_value: this.rule.condition_value,
+        },
+      }
     });
   }
 }
